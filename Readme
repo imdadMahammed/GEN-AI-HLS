@@ -1,0 +1,98 @@
+Centralized LabVantage Test Data for Oncology Department
+Overview
+This project centralizes the data from LabVantage tests for the oncology department. The system ingests, transforms, validates, and stores test results while leveraging Apache Kafka for real-time data streaming. The data is then stored in a SQLite database, where it can be retrieved, aggregated, and visualized.
+
+Features
+Data Ingestion: Fetches simulated test data from LabVantage.
+Data Transformation: Converts data into a standardized format.
+Data Validation: Ensures the completeness and correctness of the data.
+Real-time Streaming: Uses Kafka to stream data to a topic and consume it.
+Data Storage: Saves the processed data in a SQLite database.
+Data Retrieval: Allows querying of the stored data.
+Data Aggregation: Aggregates data for summary reports.
+Data Visualization: Prints data summaries (can be extended to use visualization libraries).
+Error Handling and Logging: Captures and logs errors for monitoring and debugging.
+Components
+Kafka Producer and Consumer:
+
+initialize_kafka_producer(): Initializes a Kafka producer to send messages.
+initialize_kafka_consumer(): Initializes a Kafka consumer to receive messages.
+Data Handling:
+
+fetch_labvantage_data(): Simulates the fetching of LabVantage test data.
+transform_data(data): Converts the data into a standardized format.
+validate_data(data): Validates the data against required fields.
+Kafka Integration:
+
+stream_to_kafka(producer, data): Streams data to a Kafka topic.
+Database Operations:
+
+save_to_database(data): Saves the transformed data into a SQLite database.
+retrieve_data_from_db(query): Retrieves data from the SQLite database using a SQL query.
+aggregate_data(): Aggregates data for analysis.
+Visualization:
+
+visualize_data(df): Prints a summary of the data.
+Error Handling:
+
+error_handling_example(): Demonstrates error handling and logging.
+Getting Started
+Prerequisites
+Python 3.7 or later.
+Kafka running locally or accessible remotely.
+SQLite3 (included with Python standard library).
+Installation
+Clone the Repository:
+
+bash
+Copy code
+git clone https://github.com/imdadMahammed/GEN-AI-HLS.git
+cd labvantage-centralization
+Install Required Packages:
+Use the following command to install the required Python packages:
+
+bash
+Copy code
+pip install kafka-python pandas
+Set Up Kafka:
+Ensure Kafka is running on your local machine or accessible remotely. Adjust the KAFKA_SERVER and KAFKA_TOPIC constants in the script if necessary.
+
+Running the Script
+Execute the script to centralize LabVantage test data:
+
+bash
+Copy code
+python centralize_labvantage_tests.py
+Configuration
+You can configure the Kafka server and topic by editing these variables in the script:
+
+python
+Copy code
+KAFKA_SERVER = 'localhost:9092'
+KAFKA_TOPIC = 'oncology_labvantage_tests'
+Usage
+Simulating Data Ingestion: The script generates random test data to simulate fetching from LabVantage.
+Transforming and Validating Data: The script processes and checks the integrity of the data.
+Streaming to Kafka: The validated data is streamed to a Kafka topic.
+Saving to Database: The data is stored in a SQLite database (oncology_labvantage.db).
+Retrieving and Aggregating Data: Data can be queried and aggregated from the SQLite database.
+Visualizing Data: The script prints a summary of the data, which can be extended to graphical visualizations.
+Files
+centralize_labvantage_tests.py: The main script containing all the functions and logic for data centralization.
+requirements.txt: List of required Python packages.
+Error Handling
+The script includes basic error handling and logging. Adjust the logging level and error handling as necessary for your environment.
+
+Extending the Project
+Data Source Integration: Replace the fetch_labvantage_data function with actual data fetching from LabVantage.
+Visualization Enhancements: Use visualization libraries like matplotlib or seaborn for advanced data visualization.
+Database Expansion: Switch from SQLite to a more robust database system like PostgreSQL or MySQL for handling larger datasets.
+Deployment: Containerize the application using Docker for easier deployment and scaling.
+License
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+Contact
+For questions or contributions, please reach out to: ikonda.mohd@gmail.com
+
+Your Name: Imdad K Mahammed
+GitHub: imdadMahammed
